@@ -1,5 +1,3 @@
-// ---- Año en el footer ----
-// (con chequeo para no romper el resto del script si el elemento no existe)
 const yearEl = document.getElementById('year');
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
@@ -112,7 +110,7 @@ function escapeHtml(str){
 
 renderReviews();
 
-// ---- Selector de estrellas del formulario ----
+
 const starButtons = document.querySelectorAll('#starInput .star');
 const ratingInput = document.getElementById('revRating');
 
@@ -173,12 +171,7 @@ reviewForm.addEventListener('submit', (e) => {
   reviewMsg.className = 'form-msg ok';
 });
 
-// =====================================================
-// FORMULARIO DE CONTACTO -> WHATSAPP
-// =====================================================
-// Número de WhatsApp del negocio (el mismo que usa el botón flotante
-// y el enlace del pie del formulario). Cambiá este valor si el número
-// cambia en el futuro.
+
 const WHATSAPP_NUMBER = '595213397689';
 
 const contactForm = document.getElementById('contactForm');
@@ -205,7 +198,7 @@ contactForm.addEventListener('submit', (e) => {
     return;
   }
 
-  // Armamos el mensaje de WhatsApp con los datos cargados en el formulario.
+  
   let text = `Hola, quiero pedir instalación de internet.\n`;
   text += `Nombre: ${name}\n`;
   text += `Teléfono: ${phone}\n`;
@@ -221,6 +214,6 @@ contactForm.addEventListener('submit', (e) => {
 
   contactForm.reset();
 
-  // Abrimos WhatsApp en una nueva pestaña con el mensaje precargado.
+
   window.open(waUrl, '_blank', 'noopener');
 });

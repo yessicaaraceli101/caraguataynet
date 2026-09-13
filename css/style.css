@@ -340,7 +340,6 @@ img,svg{display:block; max-width:100%;}
   padding:32px;
 }
 
-/* FOOTER — ahora en verde */
 .site-footer{background:var(--green-dark); color:rgba(255,255,255,.92);}
 .footer-inner{
   display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px;
