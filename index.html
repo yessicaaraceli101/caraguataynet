@@ -29,7 +29,6 @@
     <nav class="main-nav" id="mainNav">
       <a href="#plan">Plan</a>
       <a href="#cobertura">Cobertura</a>
-      <a href="#resenas">Reseñas</a>
       <a href="#contacto">Contacto</a>
     </nav>
 
@@ -199,51 +198,6 @@
     </div>
   </section>
 
-  <!-- RESEÑAS -->
-  <section class="section section-alt" id="resenas">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Lo que dicen nuestros clientes</h2>
-        <p id="reviewSummary" class="review-summary">Cargando reseñas…</p>
-      </div>
-
-      <div class="reviews-layout">
-        <ul class="reviews-list" id="reviewsList" aria-live="polite"></ul>
-
-        <div class="review-form-card">
-          <h3>Dejá tu reseña</h3>
-          <p class="muted">Contanos cómo fue tu experiencia con la instalación o el soporte.</p>
-          <form id="reviewForm" novalidate>
-            <div class="field">
-              <label for="revName">Nombre</label>
-              <input type="text" id="revName" name="revName" required maxlength="60" autocomplete="name">
-            </div>
-
-            <div class="field">
-              <label id="revRatingLabel">Puntaje</label>
-              <div class="star-input" role="radiogroup" aria-labelledby="revRatingLabel" id="starInput">
-                <button type="button" class="star" data-value="1" role="radio" aria-checked="false" aria-label="1 estrella">★</button>
-                <button type="button" class="star" data-value="2" role="radio" aria-checked="false" aria-label="2 estrellas">★</button>
-                <button type="button" class="star" data-value="3" role="radio" aria-checked="false" aria-label="3 estrellas">★</button>
-                <button type="button" class="star" data-value="4" role="radio" aria-checked="false" aria-label="4 estrellas">★</button>
-                <button type="button" class="star" data-value="5" role="radio" aria-checked="false" aria-label="5 estrellas">★</button>
-              </div>
-              <input type="hidden" id="revRating" name="revRating" value="0">
-            </div>
-
-            <div class="field">
-              <label for="revText">Tu comentario</label>
-              <textarea id="revText" name="revText" rows="3" required maxlength="300"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Publicar reseña</button>
-            <p class="form-msg" id="reviewMsg" role="status"></p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CONTACTO -->
   <section class="section" id="contacto">
     <div class="wrap contacto-inner">
@@ -304,7 +258,6 @@
     <nav class="footer-nav">
       <a href="#plan">Plan</a>
       <a href="#cobertura">Cobertura</a>
-      <a href="#resenas">Reseñas</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </div>
