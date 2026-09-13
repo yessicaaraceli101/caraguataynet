@@ -220,24 +220,41 @@
 
       <form class="contact-form" id="contactForm" novalidate>
         <div class="field">
-          <label for="ctName">Nombre y apellido</label>
+          <label for="ctName">Nombre y apellido:</label>
           <input type="text" id="ctName" name="ctName" required autocomplete="name">
         </div>
         <div class="field">
-          <label for="ctPhone">Teléfono</label>
+          <label for="ctPhone">Teléfono:</label>
           <input type="tel" id="ctPhone" name="ctPhone" required autocomplete="tel" placeholder="09XX XXX XXX">
         </div>
         <div class="field">
-          <label for="ctZone">Barrio o compañía</label>
-          <input type="text" id="ctZone" name="ctZone" required>
+          <label for="ctZone">Ciudad:</label>
+          <select id="ctZone" name="ctZone" required>
+            <option value="" disabled selected>Seleccionar ciudad</option>
+            <option value="Caraguatay">Caraguatay</option>
+            <option value="Isla Pucu">Isla Pucú</option>
+            <option value="Mbocayaty del Yhaguy">Mbocayaty del Yhaguy</option>
+            <option value="Primero de Marzo">Primero de Marzo</option>
+            <option value="San Jose Obrero">San José Obrero</option>
+            <option value="Santa Elena">Santa Elena</option>
+            <option value="Tobati">Tobatí</option>
+          </select>
+        </div>
+        <div class="field field-location">
+          <label>Ubicación (opcional):</label>
+          <button type="button" class="btn btn-outline btn-location" id="btnLocation">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            Compartir mi ubicación
+          </button>
+          <p class="location-status" id="locationStatus"></p>
         </div>
         <div class="field">
-          <label for="ctMsg">Mensaje (opcional)</label>
+          <label for="ctMsg">Mensaje (opcional):</label>
           <textarea id="ctMsg" name="ctMsg" rows="3" maxlength="400"></textarea>
         </div>
         <button type="submit" class="btn btn-primary btn-lg">Enviar solicitud</button>
         <p class="form-msg" id="contactMsg" role="status"></p>
-        <p class="form-fineprint">También podés escribirnos directo por <a href="https://wa.me/595213397689" target="_blank" rel="noopener">WhatsApp</a>.</p>
+        <p class="form-fineprint">Comunícate con nosotros <a href="https://wa.me/595213397689" target="_blank" rel="noopener">WhatsApp</a>.</p>
       </form>
     </div>
   </section>

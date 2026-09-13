@@ -288,6 +288,70 @@ img,svg{display:block; max-width:100%;}
 .field input:focus, .field textarea:focus{
   border-color:var(--green);
 }
+
+/* Select custom (ciudad / compañía) */
+.field select{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  width:100%;
+  border:1.5px solid var(--line);
+  border-radius:var(--radius-s);
+  padding:11px 42px 11px 13px;
+  font-family:var(--font-body);
+  font-size:16px;
+  font-weight:500;
+  color:var(--ink);
+  background-color:var(--white);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--green-dark) 50%),
+    linear-gradient(135deg, var(--green-dark) 50%, transparent 50%);
+  background-position:
+    calc(100% - 22px) center,
+    calc(100% - 16px) center;
+  background-size:6px 6px, 6px 6px;
+  background-repeat:no-repeat;
+  cursor:pointer;
+  transition:border-color .15s ease, box-shadow .15s ease;
+}
+.field select:hover{
+  border-color:var(--green);
+}
+.field select:focus{
+  border-color:var(--green);
+  box-shadow:0 0 0 4px rgba(31,157,85,.14);
+}
+.field select:invalid{
+  color:var(--ink-soft);
+}
+.field select option{
+  color:var(--ink);
+  font-weight:500;
+}
+.field select option[value=""]{
+  color:var(--ink-soft);
+}
+
+.field-location{margin-bottom:16px;}
+.btn-location{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  width:100%;
+  padding:11px 16px;
+  font-size:.92rem;
+}
+.btn-location svg{width:18px; height:18px; flex-shrink:0;}
+.location-status{
+  min-height:1.3em;
+  font-size:.86rem;
+  font-weight:600;
+  margin:8px 0 0;
+  color:var(--ink-soft);
+}
+.location-status.ok{color:var(--green-dark);}
+.location-status.error{color:var(--orange-dark);}
+
 .form-msg{
   min-height:1.4em;
   font-size:.9rem;

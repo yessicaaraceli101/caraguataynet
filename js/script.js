@@ -25,6 +25,47 @@ const WHATSAPP_NUMBER = '595213397689';
 const contactForm = document.getElementById('contactForm');
 const contactMsg = document.getElementById('contactMsg');
 
+// ---- Ubicación (geolocalización del navegador) ----
+const btnLocation = document.getElementById('btnLocation');
+const locationStatus = document.getElementById('locationStatus');
+const btnLocationLabel = btnLocation.innerHTML;
+let userCoords = null;
+
+btnLocation.addEventListener('click', () => {
+  if (!('geolocation' in navigator)) {
+    locationStatus.textContent = 'Tu navegador no admite ubicación automática. Podés escribir tu dirección en el mensaje.';
+    locationStatus.className = 'location-status error';
+    return;
+  }
+
+  btnLocation.disabled = true;
+  locationStatus.textContent = 'Obteniendo tu ubicación…';
+  locationStatus.className = 'location-status';
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      userCoords = {
+        lat: pos.coords.latitude,
+        lng: pos.coords.longitude
+      };
+      locationStatus.textContent = '📍 Ubicación agregada. Se enviará junto con tu solicitud.';
+      locationStatus.className = 'location-status ok';
+      btnLocation.innerHTML = '✓ Ubicación agregada';
+      btnLocation.disabled = false;
+    },
+    (err) => {
+      let message = 'No pudimos obtener tu ubicación. Podés escribir tu dirección en el mensaje.';
+      if (err.code === err.PERMISSION_DENIED) {
+        message = 'Permiso de ubicación denegado. Podés escribir tu dirección en el mensaje.';
+      }
+      locationStatus.textContent = message;
+      locationStatus.className = 'location-status error';
+      btnLocation.disabled = false;
+    },
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
+});
+
 contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -50,6 +91,10 @@ contactForm.addEventListener('submit', (e) => {
   text += `Nombre: ${name}\n`;
   text += `Teléfono: ${phone}\n`;
   text += `Barrio/Compañía: ${zone}`;
+  if (userCoords) {
+    const mapsUrl = `https://www.google.com/maps?q=${userCoords.lat},${userCoords.lng}`;
+    text += `\nUbicación: ${mapsUrl}`;
+  }
   if (msg) {
     text += `\nMensaje: ${msg}`;
   }
@@ -60,6 +105,10 @@ contactForm.addEventListener('submit', (e) => {
   contactMsg.className = 'form-msg ok';
 
   contactForm.reset();
+  userCoords = null;
+  btnLocation.innerHTML = btnLocationLabel;
+  locationStatus.textContent = '';
+  locationStatus.className = 'location-status';
 
   window.open(waUrl, '_blank', 'noopener');
 });
