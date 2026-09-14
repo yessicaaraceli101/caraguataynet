@@ -33,7 +33,7 @@ let userCoords = null;
 
 btnLocation.addEventListener('click', () => {
   if (!('geolocation' in navigator)) {
-    locationStatus.textContent = 'Tu navegador no admite ubicación automática. Podés escribir tu dirección en el mensaje.';
+    locationStatus.textContent = 'Tu navegador no admite ubicación automática. Escribinos por WhatsApp para coordinar la instalación.';
     locationStatus.className = 'location-status error';
     return;
   }
@@ -54,9 +54,9 @@ btnLocation.addEventListener('click', () => {
       btnLocation.disabled = false;
     },
     (err) => {
-      let message = 'No pudimos obtener tu ubicación. Podés escribir tu dirección en el mensaje.';
+      let message = 'No pudimos obtener tu ubicación. Es obligatoria para continuar: revisá los permisos e intentá de nuevo.';
       if (err.code === err.PERMISSION_DENIED) {
-        message = 'Permiso de ubicación denegado. Podés escribir tu dirección en el mensaje.';
+        message = 'Permiso de ubicación denegado. Es obligatorio compartir tu ubicación para enviar la solicitud: habilitalo en la configuración de tu navegador e intentá de nuevo.';
       }
       locationStatus.textContent = message;
       locationStatus.className = 'location-status error';
@@ -87,14 +87,21 @@ contactForm.addEventListener('submit', (e) => {
     return;
   }
 
+  // La ubicación es obligatoria
+  if(!userCoords){
+    contactMsg.textContent = 'Por favor, compartí tu ubicación antes de enviar la solicitud.';
+    contactMsg.className = 'form-msg error';
+    locationStatus.textContent = 'Este campo es obligatorio. Tocá "Compartir mi ubicación".';
+    locationStatus.className = 'location-status error';
+    return;
+  }
+
   let text = `Hola, quiero pedir instalación de internet.\n`;
   text += `Nombre: ${name}\n`;
   text += `Teléfono: ${phone}\n`;
   text += `Barrio/Compañía: ${zone}`;
-  if (userCoords) {
-    const mapsUrl = `https://www.google.com/maps?q=${userCoords.lat},${userCoords.lng}`;
-    text += `\nUbicación: ${mapsUrl}`;
-  }
+  const mapsUrl = `https://www.google.com/maps?q=${userCoords.lat},${userCoords.lng}`;
+  text += `\nUbicación: ${mapsUrl}`;
   if (msg) {
     text += `\nMensaje: ${msg}`;
   }
