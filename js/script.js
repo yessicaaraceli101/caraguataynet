@@ -99,7 +99,7 @@ contactForm.addEventListener('submit', (e) => {
   let text = `Hola, quiero pedir instalación de internet.\n`;
   text += `Nombre: ${name}\n`;
   text += `Teléfono: ${phone}\n`;
-  text += `Barrio/Compañía: ${zone}`;
+  text += `Ciudad: ${zone}`;
   const mapsUrl = `https://www.google.com/maps?q=${userCoords.lat},${userCoords.lng}`;
   text += `\nUbicación: ${mapsUrl}`;
   if (msg) {
