@@ -75,7 +75,7 @@ contactForm.addEventListener('submit', (e) => {
   const msg = document.getElementById('ctMsg').value.trim();
 
   if(!name || !phone || !zone){
-    contactMsg.textContent = 'Completá nombre, teléfono y barrio o compañía.';
+    contactMsg.textContent = 'Completá nombre, teléfono y ciudad.';
     contactMsg.className = 'form-msg error';
     return;
   }
